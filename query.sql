@@ -1,0 +1,3 @@
+CREATE OR REPLACE VIEW number_of_subsriptions AS SELECT accounts.username, COUNT(*)FROM accounts LEFT JOIN account_group ON accounts.acc_id = account_group.acc_id GROUP BY accounts.username; SELECT * FROM number_of_subsriptions;
+CREATE OR REPLACE VIEW group_year_of_creation AS SELECT EXTRACT(YEAR FROM creation_date), COUNT(EXTRACT(YEAR FROM creation_date))FROM groups GROUP BY EXTRACT(YEAR FROM creation_date) ORDER BY EXTRACT(YEAR FROM creation_date) ASC; SELECT * FROM group_year_of_creation;
+CREATE OR REPLACE VIEW number_of_subscribers AS SELECT group_name, number_of_subscribers FROM groups ORDER BY number_of_subscribers DESC; SELECT * FROM number_of_subscribers;
